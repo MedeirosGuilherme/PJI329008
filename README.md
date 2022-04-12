@@ -1,12 +1,13 @@
-<p style="text-align: center;font-size:30px;">  Sistema Robô Explorador </p>
-<p style="text-align: center;font-size:22px;"> - Proposta de Projeto - </p>
-<p style="text-align: center;font-size:22px;"> Instituto Federal de Santa Catarina </p>
-<p style="text-align: center;font-size:30px;"> Projeto Integrador III - Engenharia de Telecomunicações </p>
 
-Guilherme Medeiros, Jonathan Constantino
+
+<center> <font size="8">  Sistema Robô Explorador </center></font>
+<center> <font size="5"> - Proposta de Projeto - </center></font>
+<center> <font size="6"> Instituto Federal de Santa Catarina </center></font>
+<center> <font size="6"> Projeto Integrador III - Engenharia de Telecomunicações </center></font>
+<center> <font size="4"> Guilherme Medeiros e Jonathan Constantino </center></font>
 
 --------------------------
-### RESUMO
+### RESUMO 
 Sistema de funcionamento de um robô explorador para ambientes hostis constituído de um sistema de movimentação, ativação e recepção de dados de uma câmera, medição de temperatura, pressão e angulação do robô.
 
 ### DESAFIO
