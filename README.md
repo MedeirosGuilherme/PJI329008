@@ -27,13 +27,6 @@ Algumas das tecnologias utilizadas nunca foram vistas pelos desenvolvedores (câ
 ### ORÇAMENTO
 
 ### CRONOGRAMA
-12/04 - 19/04: Fase II do planejamento do projeto.
-19/04 - 30/04: Estudo do funcionamento das partes
-02/05 - 24/05: Primeira fase de desenvolvimento
-25/05 - 28/06: Segunda fase de desenvolvimento
-28/06 - 12/07: Ajustes e testes I
-12/07 - 26/07: Testes finais e término do projeto.
-
 |Cronograma     |Tarefa                              |
 |---------------|------------------------------------|
 | 12/04 - 19/04 | Fase II do planejamento do projeto |
