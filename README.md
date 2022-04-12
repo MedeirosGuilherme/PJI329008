@@ -3,7 +3,7 @@
 ## Instituto Federal de Santa Catarina 
 ## Projeto Integrador III - Engenharia de Telecomunicações
 
-Guilherme Medeiros, Jonathan Constantino
+Guilherme Medeiros, Jhonatan Constantino
 
 --------------------------
 ### RESUMO
