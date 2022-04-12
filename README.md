@@ -1,17 +1,11 @@
-# PJI329009
-Repositório da disciplina de projeto integrador 3
-
-# Sistema Robô Explorador
-### Proposta de Projeto
-
-## Instituto Federal de Santa Catarina
-## Projeto Integrador III - Engenharia de Telecomunicações
+<p style="text-align: center;font-size:30px;">  Sistema Robô Explorador </p>
+<p style="text-align: center;font-size:22px;"> - Proposta de Projeto - </p>
+<p style="text-align: center;font-size:22px;"> Instituto Federal de Santa Catarina </p>
+<p style="text-align: center;font-size:30px;"> Projeto Integrador III - Engenharia de Telecomunicações </p>
 
 Guilherme Medeiros, Jonathan Constantino
 
 --------------------------
-
-
 ### RESUMO
 Sistema de funcionamento de um robô explorador para ambientes hostis constituído de um sistema de movimentação, ativação e recepção de dados de uma câmera, medição de temperatura, pressão e angulação do robô.
 
