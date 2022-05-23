@@ -262,3 +262,20 @@ Este cronograma pode ser melhor compreendido acessando o _board_ no _[trello](ht
 
 
 Tabela 2: Cronograma
+
+# Roadmap do projeto
+
+## ~~Versão 0.7~~: Um sistema bastante primitivo
+Versão mais primitiva do projeto. Aqui o limiar máximo de volume é configurado no próprio código do Arduino e não pode ser modificado. Além disso, o alarme de que o limite foi atingido é um simples LED que se acende, demonstrando que é a hora de trocar o filtro.
+
+Entretanto, a base do projeto já pode ser observada funcional: O sensor de vazão funciona corretamente e os dados de entrada dele são corretamente processados para se extrair a informação de litros que passaram por ele. Além disso, já é possível mostrar que é hora de trocar o filtro, principal objetivo do trabalho. As versões seguintes se baseiam em melhorar tanto a interface quanto a usabilidade deste projeto mínimo concluído nesta etapa.
+
+## Versão 0.8: Adição do Start e Reset
+V0.8: Adição do Start e Reset
+Desenvolver um sistema de start e reset, ou seja, só iniciar o sistema quando um botão for pressionado e existir a opção de apertar outro botão para reinicializar a contagens de litros do valor zero. Prazo para o lançamento: 30/05.
+
+## V0.9: Adição do controle do patamar de volume máximo
+Desenvolver um sistema com três botões para a entrada de dados de volume máximo. Um botão iniciará a configuração, outro aumentará o valor máximo de litros e outro diminuirá. Prazo para o lançamento: 13/06
+
+## V1.0: Interface com o usuário completa:
+Desenvolver a interface com o usuário através de uma tela de LCD, que mostrará a quantidade de litros máxima configurada atualmente assim como quantos litros já se passaram. Com esta sessão desenvolvida, assim como as três versões mencionadas anteriormente, o produto tem sua interface com o usuário completamente desenvolvida.
