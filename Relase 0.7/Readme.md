@@ -10,7 +10,7 @@ Jhonathan Constantino
 
 # Sobre o estado do projeto:
 
-O projeto se encontra em sua versão mais produtiva operável, ele já é suficiente para fazer o controle de um filtro qualquer, desde que a configuração da quantidade de litros de água máxima possa ser feita pela interface do próprio Arduino.
+O projeto se encontra em sua versão mais primitiva operável, ele já é suficiente para fazer o controle de um filtro qualquer, desde que a configuração da quantidade de litros de água máxima possa ser feita pela interface do próprio Arduino.
 
 No estado atual, o microcontrolador recebe os dados do sensor de vazão, os processa para conseguir assegurar a quantidade de litros que foi passada (e não de pulsos elétricos) e os mantém em memória. Atingindo um patamar já configurado no equipamento, um LED demonstra a necessidade de troca do filtro, que agora pode ser descartado evitando desperdícios de material.
 
