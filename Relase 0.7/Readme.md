@@ -139,6 +139,12 @@ Desenvolver a interface com o usuário através de uma tela de LCD, que mostrar�
 
 O produto final contará com espessa documentação, tanto para o usuário quando para a empresa desenvolvedora manter registro do que foi feito e de como incrementar o produto. Por isso, toda a documentação prévia está sendo feita neste repositório assim como no Trello da equipe.
 
+# Diagrama de blocos da versão 0.7
+
+![block](block.png)
+
+
+
 # Pinagem da versão V0.7
 
 ```json
