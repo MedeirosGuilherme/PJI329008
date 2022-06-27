@@ -1,6 +1,7 @@
-#define LED_PIN 7
+#define led_pin 12
 #define buttonPin 8
 
+// Variávies do temporizador do botão
 int startPressed = 0;
 int endPressed = 0;
 int holdTime = 0;
@@ -9,23 +10,39 @@ int buttonState = 0;
 int lastButtonState = 0;
 int led = 0;
 
+// Variáveis do sistema:
+float vol = 0;
+int i = 0;
+
 void setup() {
-  pinMode(LED_PIN, OUTPUT);
+  pinMode(led_pin, OUTPUT);
   pinMode(buttonPin, INPUT);
   Serial.begin(9600);
 }
 
 void loop() {
   buttonState = digitalRead(buttonPin);
+  
+  if(i == 0){
+    vol = 50.00;
+    Serial.print("Volume inicial:" );
+    Serial.println(vol);
+    i = 1;
+  }
 
   if(buttonState != lastButtonState) {
-    Serial.println("mudou Estado!");
+    if(digitalRead(buttonPin) == HIGH){
+      Serial.println("Botão apertado!");
+    } else{
+      Serial.println("Botão solto!\n");
+    }
     updateState();
   }
   
   lastButtonState = buttonState;
 }
 
+// Temporizador de botões e estados da MEF:
 void updateState() {
   if (buttonState == HIGH){
     startPressed = millis();
@@ -36,15 +53,16 @@ void updateState() {
     holdTime = endPressed - startPressed;
 
     if (holdTime >=2000 && holdTime < 5000){
-      Serial.println("button was held for two seconds");
-      digitalWrite(LED_PIN, HIGH);
-      Serial.println("Led aceso!");
+      Serial.println("Botão foi apertado por 2 segundos");
+      digitalWrite(led_pin, HIGH);
+      Serial.println("Led aceso!\n");
     } 
 
-    if (holdTime >= 5000){
-      Serial.println("Button was held for five seconds");
-      digitalWrite(LED_PIN, LOW);
-      Serial.println("Led apagado!");
+    if (holdTime >= 30000){
+      Serial.println("Botão foi apertado por 30 segundos");
+      Serial.println("Volume medido zerado.");
+      vol = 0;
+      Serial.println(vol);
     }
   }
-}
+} 
