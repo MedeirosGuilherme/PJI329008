@@ -348,7 +348,7 @@ O produto final contará com espessa documentação, tanto para o usuário quand
 
 ![block](block.png)
 
-# Pinagem da versão V0.7
+# Pinagem da versão V0.9
 
 ```json
 buttonPin = 8         //Entrada do botão
