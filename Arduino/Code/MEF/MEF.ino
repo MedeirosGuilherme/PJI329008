@@ -171,6 +171,17 @@ void alarme(){
 void confirma(){
   Serial.println("Estado: Confirma" );
   
+  int timeout = millis();
+  if (timeout >= 30000){
+    Serial.print("Atingindo limite de timeout:");
+    Serial.println(timeout);
+    timeout = 0;
+    estado = medindoE;
+  }
+
+  int startTimeout = 0;
+  int endTimeout = 0;
+  
   // - Flow do temporizador do botão
   buttonState = digitalRead(buttonPin);
 
@@ -187,6 +198,7 @@ void confirma(){
 
       if ((holdTime >= 5000) && (holdTime < 15000)){
         Serial.println("Button was held for five seconds");
+        timeout = 0;
         estado = conf1E;
       }
     }
@@ -216,6 +228,9 @@ void conf1(){
 
       if ((holdTime >= 5000) && (holdTime < 15000)){
         Serial.println("Button was held for five seconds");
+        vol = 0.00;
+        pulses = 0;
+        lastflowratetimer = 0;
         estado = medindoE;
       }
 
@@ -263,6 +278,9 @@ void conf2(){
 
       if ((holdTime >= 5000) && (holdTime < 15000)){
         Serial.println("Button was held for five seconds");
+        vol = 0.00;
+        pulses = 0;
+        lastflowratetimer = 0;
         estado = medindoE;
       }
 
