@@ -1,8 +1,16 @@
+
 using namespace std;
 
-#define buttonPin A5
-#define buzzPin 12
-#define FLOWSENSORPIN 2
+#define buttonPin A0
+#define buzzPin A2
+#define FLOWSENSORPIN A4
+
+#include <LiquidCrystal.h>
+
+//-----------------------------PINAGEM DO LCD--------------------------------------------
+const int rs = 8, en = 9, d4 = 4, d5 = 5, d6 = 6, d7 = 7;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
 
 //----------------------------SET DO CONTADOR DE PULSOS PARA O SENSOR DE VAZÃO------------
 // count how many pulses!
@@ -50,7 +58,9 @@ void setup() {
   digitalWrite(FLOWSENSORPIN, HIGH);
   lastflowpinstate = digitalRead(FLOWSENSORPIN);
   useInterrupt(true);
-  
+
+    // set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
   
   Serial.begin(9600);    
 }
@@ -87,7 +97,19 @@ void medindo(){
   vol = pulses;
   vol /= 7.5;
   vol /= 60.0;
-
+    // print the number of seconds since reset:
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Volume Medido:");  
+  lcd.setCursor(0, 1);
+  lcd.print(vol);
+  lcd.setCursor(4, 1);
+  lcd.print("/");
+  lcd.setCursor(5, 1);
+  lcd.print(valvo);
+  lcd.setCursor(10, 1);
+  lcd.print("litros");
+  
   Serial.print(vol); 
   Serial.println(" litros medidos (vol)");
 
@@ -96,21 +118,21 @@ void medindo(){
     estado = alarmeE;
   }
 
-  delay(300);
-
   // - Flow do temporizador do botão
-  buttonState = digitalRead(buttonPin);
+  buttonState = !digitalRead(buttonPin);
 
   if(buttonState != lastButtonState) {
-    Serial.println("mudou Estado!");
+    Serial.print("mudou Estado!");
     
     if (buttonState == HIGH){
-    startPressed = millis();
-    idleTime = startPressed - endPressed;
-    
+      Serial.println(" HIGH ");
+      startPressed = millis();
+      idleTime = startPressed - endPressed;
+      
     } else {
-    endPressed = millis();
-    holdTime = endPressed - startPressed;
+      Serial.println(" LOW ");
+      endPressed = millis();
+      holdTime = endPressed - startPressed;
 
       if (holdTime >= 30000){
         Serial.println("Button was held for 30 seconds");
@@ -134,9 +156,12 @@ void medindo(){
 void alarme(){
   Serial.println("Estado: Alarme" );
   digitalWrite(buzzPin, HIGH);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("ALARME");
   
   // - Flow do temporizador do botão
-  buttonState = digitalRead(buttonPin);
+  buttonState = !digitalRead(buttonPin);
 
   if(buttonState != lastButtonState) {
     Serial.println("mudou Estado!");
@@ -167,8 +192,24 @@ void alarme(){
 void confirma(){
   Serial.println("Estado: Confirma" );
   
+  int timeout = millis();
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Ajustar volume");
+  lcd.setCursor(0,1);
+  lcd.print("Confirma?");
+  if (timeout >= 30000){
+    Serial.print("Atingindo limite de timeout:");
+    Serial.println(timeout);
+    timeout = 0;
+    estado = medindoE;
+  }
+
+  int startTimeout = 0;
+  int endTimeout = 0;
+  
   // - Flow do temporizador do botão
-  buttonState = digitalRead(buttonPin);
+  buttonState = !digitalRead(buttonPin);
 
   if(buttonState != lastButtonState) {
     Serial.println("mudou Estado!");
@@ -183,6 +224,7 @@ void confirma(){
 
       if ((holdTime >= 5000) && (holdTime < 15000)){
         Serial.println("Button was held for five seconds");
+        timeout = 0;
         estado = conf1E;
       }
     }
@@ -196,8 +238,16 @@ void conf1(){
   Serial.print("Valvo: ");
   Serial.println(valvo);
 
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Ajuste.");
+  lcd.setCursor(0, 1);
+  lcd.print("Volume:");
+  lcd.setCursor(9, 1);
+  lcd.print(valvo);
+
   // - Flow do temporizador do botão
-  buttonState = digitalRead(buttonPin);
+  buttonState = !digitalRead(buttonPin);
 
   if(buttonState != lastButtonState) {
     Serial.println("mudou Estado!");
@@ -212,6 +262,9 @@ void conf1(){
 
       if ((holdTime >= 5000) && (holdTime < 15000)){
         Serial.println("Button was held for five seconds");
+        vol = 0.00;
+        pulses = 0;
+        lastflowratetimer = 0;
         estado = medindoE;
       }
 
@@ -239,12 +292,19 @@ void conf1(){
 }
 
 void conf2(){
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Ajuste.");
+  lcd.setCursor(0, 1);
+  lcd.print("Volume:");
+  lcd.setCursor(9, 1);
+  lcd.print(valvo);
   Serial.println("Estado: conf2" );
   Serial.print("Valvo: ");
   Serial.println(valvo);
 
   // - Flow do temporizador do botão
-  buttonState = digitalRead(buttonPin);
+  buttonState = !digitalRead(buttonPin);
 
   if(buttonState != lastButtonState) {
     Serial.println("mudou Estado!");
@@ -259,6 +319,9 @@ void conf2(){
 
       if ((holdTime >= 5000) && (holdTime < 15000)){
         Serial.println("Button was held for five seconds");
+        vol = 0.00;
+        pulses = 0;
+        lastflowratetimer = 0;
         estado = medindoE;
       }
 
