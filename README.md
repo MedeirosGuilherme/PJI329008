@@ -277,5 +277,5 @@ Desenvolver um sistema de start e reset, ou seja, só iniciar o sistema quando u
 ## ~~Versão 0.9~~: Adição do controle do patamar de volume máximo
 Desenvolver um sistema com três botões para a entrada de dados de volume máximo. Um botão iniciará a configuração, outro aumentará o valor máximo de litros e outro diminuirá. Prazo para o lançamento: 13/06
 
-## Versão 1.0: Interface com o usuário completa:
+## ~~Versão 1.0~~: Interface com o usuário completa:
 Desenvolver a interface com o usuário através de uma tela de LCD, que mostrará a quantidade de litros máxima configurada atualmente assim como quantos litros já se passaram. Com esta sessão desenvolvida, assim como as três versões mencionadas anteriormente, o produto tem sua interface com o usuário completamente desenvolvida.
